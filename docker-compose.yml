@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: togglekit_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: togglekit
+    ports:
+      - "5432:5432"
+    volumes:
+      - togglekit-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: togglekit_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - togglekit-redis-data:/data
+    restart: unless-stopped
+
+volumes:
+  togglekit-db-data:
+    driver: local
+  togglekit-redis-data:
+    driver: local
