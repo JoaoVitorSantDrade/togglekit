@@ -1,0 +1,6 @@
+[workspace]
+resolver ="3"
+members = ["togglekit-api", "togglekit-core", "togglekit-rs"]
+
+[workspace.dependencies]
+
